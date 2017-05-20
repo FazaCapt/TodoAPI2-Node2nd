@@ -1,4 +1,5 @@
-// Setting Up The User Model 17:58
+// Private Routes and Auth Middleware 18:45
+
 const mongoose = require('mongoose');
 const validator = require('validator');
 const jwt = require('jsonwebtoken');
@@ -19,7 +20,7 @@ var UserSchema = new mongoose.Schema({
     password: {
         type: String,
         require: true,
-        minlength: 6 // 'minlength' => L-nya kecil aja
+        minlength: 6
     },
     tokens: [{
         access: {
@@ -40,7 +41,7 @@ UserSchema.methods.toJSON = function() {
     return _.pick(userObject, ['_id', 'email']);
 }
 
-UserSchema.methods.generateAuthToken = function() { //kurang 's' pada methods
+UserSchema.methods.generateAuthToken = function() {
     var user = this;
     var access = 'auth';
     var token = jwt.sign({ _id: user._id.toHexString(), access }, '123abc').toString();
@@ -52,62 +53,27 @@ UserSchema.methods.generateAuthToken = function() { //kurang 's' pada methods
     });
 };
 
+UserSchema.statics.findByToken = function(token) {
+    var User = this;
+    var decoded;
+
+    try {
+        decoded = jwt.verify(token, '123abc');
+    } catch (e) {
+        // return new Promise((resolve, reject) => {
+        //     reject();
+        // })
+        return Promise.reject();
+    }
+
+    return User.findOne({
+        '_id': decoded._id,
+        'tokens.token': token,
+        'tokens.access': 'auth'
+    });
+};
+
 var User = mongoose.model('User', UserSchema);
 
 
 module.exports = { User };
-
-// Dganti seperti diatas:
-// var User = mongoose.model('User', {
-//     email: {
-//         type: String,
-//         required: true,
-//         minlength: 1,
-//         trim: true,
-//         unique: true,
-//         validate: {
-//             validator: validator.isEmail,
-//             message: '{VALUE} is not valid email',
-//         }
-//     },
-//     password: {
-//         type: String,
-//         require: true,
-//         minlength: 6 // 'minlength' => L-nya kecil aja
-//     },
-//     tokens: [{
-//         access: {
-//             type: String,
-//             required: true
-//         },
-//         token: {
-//             type: String,
-//             required: true
-//         }
-//     }]
-// });
-
-
-// {
-//     email: 'fazafahamsyah@gmail.com',
-//     password: '123Abc',
-//     tokens:[{
-//         access: 'auth',
-//         token: 'ini ngasal aja'
-//     }]
-// }
-
-
-// Catatan:
-// unique: {Boolean} - Memberitahu Mongoose untuk memastikan indeks unik dibuat untuk jalur ini. Berikut ini adalah ekuivalen:
-
-// Catatan: jika indeks sudah ada di db, maka tidak akan diganti
-
-//     validator: (value) => {
-//         return validator.isEmail(value);
-//     },
-
-
-// .then((token)=>{
-
-// })
