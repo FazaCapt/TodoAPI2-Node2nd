@@ -1,4 +1,5 @@
-// Logging In - POST /users/login 16:52
+// Private Routes and Auth Middleware 18:45
+// Hashing Passwords 16:43
 
 require('./config/config');
 
@@ -92,12 +93,13 @@ app.patch('/todos/:id', (req, res) => {
     })
 })
 
+// POST/ User
 app.post('/users', (req, res) => {
     var body = _.pick(req.body, ['email', 'password']);
     var user = new User(body);
 
     user.save().then(() => {
-        return user.generateAuthToken();
+        return user.generateAuthToken(); // res.send(user);
     }).then((token) => {
         res.header('x-auth', token).send(user);
     }).catch((e) => {
@@ -105,22 +107,30 @@ app.post('/users', (req, res) => {
     })
 })
 
+
+
 app.get('/users/me', authenticate, (req, res) => {
     res.send(req.user);
+
+    // var token = req.header('x-auth');
+
+    // User.findByToken(token).then((user) => {
+    //     if (!user) {
+    //         // res.status(401).send();
+    //         return Promise.reject();
+    //     }
+    //     res.send(user);
+    // }).catch((e) => {
+    //     res.status(401).send();
+    // })
 });
+
+// POST /users/login {email, password}
 
 app.post('/users/login', (req, res) => {
     var body = _.pick(req.body, ['email', 'password']);
 
-    User.findByCredentials(body.email, body.password).then((user) => {
-        // res.send(user);
-        return user.generateAuthToken().then((token) => {
-            res.header('x-auth', token).send(user);
-        });
-    }).catch((e) => {
-        res.status(400).send();
-    });
-    // res.send(body);
+    res.send(body);
 });
 
 app.listen(port, () => {
@@ -128,3 +138,8 @@ app.listen(port, () => {
 })
 
 module.exports = { app };
+
+// Auth token method
+// User.findByToken
+// user.genereteAuthToken
+// user di colom then pertama dihapus!
