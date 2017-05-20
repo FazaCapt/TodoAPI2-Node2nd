@@ -1,4 +1,5 @@
 // Private Routes and Auth Middleware 18:45
+// Hashing Passwords 16:43
 
 require('./config/config');
 
@@ -105,6 +106,7 @@ app.post('/users', (req, res) => {
         res.status(400).send(e);
     })
 })
+
 
 
 app.get('/users/me', authenticate, (req, res) => {

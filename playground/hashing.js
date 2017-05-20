@@ -1,5 +1,6 @@
 // JWTs and Hashing 19: 32
 // Hashing Passwords 16:43
+
 const { SHA256 } = require('crypto-js');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
