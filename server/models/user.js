@@ -77,6 +77,7 @@ UserSchema.statics.findByToken = function(token) {
     });
 };
 
+// Login
 UserSchema.statics.findByCredentials = function(email, password) {
     var User = this;
 
@@ -93,9 +94,9 @@ UserSchema.statics.findByCredentials = function(email, password) {
                 } else {
                     reject();
                 }
-            })
-        })
-    })
+            });
+        });
+    });
 };
 
 
