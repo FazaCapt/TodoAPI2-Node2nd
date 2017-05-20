@@ -1,3 +1,5 @@
+// Private Routes and Auth Middleware 18:45
+
 require('./config/config');
 
 const _ = require('lodash');

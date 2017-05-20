@@ -1,3 +1,6 @@
+// Private Routes and Auth Middleware 18:45
+
+
 var { User } = require('./../models/user');
 
 var authenticate = (req, res, next) => {

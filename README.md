@@ -22,12 +22,14 @@ instal package;
 1. npm install validator --save 'https://www.npmjs.com/package/validator'
 2. npm install crypto-js --save 'https://www.npmjs.com/package/crypto-js'
 3. npm install jsonwebtoken --save 'https://www.npmjs.com/package/jsonwebtoken'
+4. npm install bcrypt --save 'https://www.npmjs.com/package/bcryptjs'
 
 
 Document:
 1. Schematypes: 'http://mongoosejs.com/docs/2.7.x/docs/schematypes.html'
 2. Custom validator: 'http://mongoosejs.com/docs/validation.html'
-3. JWT ; 'https://jwt.io/introduction/'
+3. JWT: 'https://jwt.io/introduction/'
+4. middleware-mongoose : 'http://mongoosejs.com/docs/middleware.html'
 
 Catatan penjelasan Module:
 1. Crypto-js 'https://en.wikipedia.org/wiki/Cryptography'
@@ -93,6 +95,14 @@ Dalam beberapa algoritma, biasanya juga ditambahkan Hashing sebagai bagian prose
 Dalam Cryptography baik secara teori dan prakteknya adalah tentang keamanan berkomunikasi. Yang melibatkan bagaimana cara melakukan itu dan memastikan tidak ada siapapun dapat membaca pesan pribadi tersebut. Dari aspek keamanan data, integritasnya, siapa penggunanya dan teknik yang bersangkutan (dari math, computer-science dan electrical-engineering). Dan untuk sekarang ini adalah luas sekali penggunaan Cryptography ini, terutama yang berhubungan dengan dunia bisnis.
 
 Setelah melihat penjabaran diatas yang berhubungan langsung dengan Cryptography adalah Hashing dan Encryption. Bukan berarti Encoding dan Obfuscation tidak penting disini. Dalam beberapa kesempatan ke empat yang kita bahas tadi bekerja sama sesuai dengan kebutuhannya.
+
+7. bcrypt
+    - Dioptimalkan bcrypt di JavaScript dengan nol dependensi. 
+    - Kompatibel dengan C ++ bcrypt yang mengikat node.js dan juga bekerja di browser.
+    - Pertimbangan keamanan
+        - Selain menggabungkan garam untuk melindungi terhadap serangan meja pelangi, bcrypt adalah fungsi adaptif: dari waktu ke waktu, jumlah iterasi dapat ditingkatkan untuk membuatnya lebih lambat, sehingga tetap tahan terhadap serangan pencarian brute force bahkan dengan meningkatnya daya komputasi. (https://en.wikipedia.org/wiki/Bcrypt)
+        - Sementara bcrypt.js kompatibel dengan binding C ++ bcrypt, ditulis dalam JavaScript murni dan dengan demikian lebih lambat (sekitar 30%), secara efektif mengurangi jumlah iterasi yang dapat diproses dalam rentang waktu yang sama.
+        - Panjang input maksimum adalah 72 byte (perhatikan bahwa karakter yang dikodekan UTF8 menggunakan hingga 4 byte) dan panjang hash yang dihasilkan adalah 60 karakter.
 
 file Image:
 1. 'https://commons.wikimedia.org/w/index.php?curid=11283379'
