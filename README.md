@@ -24,6 +24,11 @@ instal package;
 3. npm install jsonwebtoken --save 'https://www.npmjs.com/package/jsonwebtoken'
 4. npm install bcrypt --save 'https://www.npmjs.com/package/bcryptjs'
 
+Heroku: 
+1. heroku create 'https://git.heroku.com/cryptic-eyrie-14160.git'
+2. git push heroku
+3. heroku config
+4. heroku config:set NAME=Andrew
 
 Document:
 1. Schematypes: 'http://mongoosejs.com/docs/2.7.x/docs/schematypes.html'
