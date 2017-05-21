@@ -23,12 +23,14 @@ const users = [{
 
 const todos = [{
     _id: new ObjectID(), //Jangan lupa tutup kurungnya
-    text: 'First test todo'
+    text: 'First test todo',
+    _creator: userOneId
 }, {
     _id: new ObjectID(), //Jangan lupa tutup kuungnya
     text: 'Second test todo',
     completed: true,
-    completedAt: 333
+    completedAt: 333,
+    _creator: userTwoId
 }];
 
 const populateTodos = (done) => { //Berjalan sebelum setiap tes di blok ini
