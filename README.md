@@ -1,42 +1,26 @@
-Security and Authentication
+### Resource
 
-1. Section Intro 0:53
-2. Setting Up The User Model 17:58
-3. JWTs and Hashing 19:32 (Json Web Token) || 'https://jwt.io/'
-4. Generating Auth Tokens and Setting Headers 16:45
-5. Private Routes and Auth Middleware 18:45
-6. Hashing Passwords 16:43
-7. Seeding Test Database With Users 13:47
-8. Testing POST /users and GET /users/me 17:35
-9. Logging In - POST /users/login 16:52
-10. Testing POST /users/login 9:35
-11. Logging Out - DELETE /users/me/token 7:58
-12. Testing DELETE /users/me/token 7:19
-13. Making Todo Routes Private (Part 1) 11:36
-14. Making Todo Routes Private (Part 2) 16:33
-15. Improving App Configuration 17:47
-16. Deploying To Heroku 9:37
-17. Bonus: Advanced Postman 
+1. 'https://jwt.io/'
 
-instal package;
+#### instal package;
 1. npm install validator --save 'https://www.npmjs.com/package/validator'
 2. npm install crypto-js --save 'https://www.npmjs.com/package/crypto-js'
 3. npm install jsonwebtoken --save 'https://www.npmjs.com/package/jsonwebtoken'
 4. npm install bcrypt --save 'https://www.npmjs.com/package/bcryptjs'
 
-Heroku: 
+#### Heroku: 
 1. heroku create 'https://git.heroku.com/cryptic-eyrie-14160.git'
 2. git push heroku
 3. heroku config
 4. heroku config:set NAME=Andrew
 
-Document:
+#### Document:
 1. Schematypes: 'http://mongoosejs.com/docs/2.7.x/docs/schematypes.html'
 2. Custom validator: 'http://mongoosejs.com/docs/validation.html'
 3. JWT: 'https://jwt.io/introduction/'
 4. middleware-mongoose : 'http://mongoosejs.com/docs/middleware.html'
 
-Catatan penjelasan Module:
+#### Catatan penjelasan Module:
 1. Crypto-js 'https://en.wikipedia.org/wiki/Cryptography'
     - CryptoJS adalah kumpulan algoritma kriptografi standar dan aman yang diimplementasikan dalam JavaScript dengan menggunakan praktik dan pola terbaik. 
     - Mereka cepat, dan mereka memiliki antarmuka yang konsisten dan sederhana.
